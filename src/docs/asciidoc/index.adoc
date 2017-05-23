@@ -14,9 +14,7 @@ ifndef::sourcedir[:sourcedir: ../java]
 
 == Axenda
 
-* VigoTech
-* VigoJUG
-* O reto
+* VigoTech, VigoJUG e o reto
 * Talleres de iniciación
 * Instalar Java e un IDE
 * Clases, obxectos, atributos e métodos
@@ -29,7 +27,7 @@ ifndef::sourcedir[:sourcedir: ../java]
 [%notitle]
 == VigoTech Alliance
 
-image::vigotech.jpg[background,1500, 860]
+image::vigotech.jpg[background, size=cover]
 
 == VigoJUG
 
@@ -45,7 +43,7 @@ image::sponsors.jpg[sponsors,800,200]
 
 * Exercicio de programación breve (30 minutos) en GitHub
 * PRs (un directorio por cada usuaria)
-* Unha semana antes: se fecha e lanzamos enquisa (Twitter?, +1 en Github?)
+* Unha semana antes: se fecha e lanzamos enquisa
 * Charla lostrego no seguinte meetup
 
 == Talleres de iniciación
@@ -65,7 +63,7 @@ Source: http://gif.co/vc7E.gif
 == Instalar Java e un IDE
 
 * Java: http://www.oracle.com/technetwork/es/java/javase/downloads/index.html
-* IntelliJ Idea CE: https://www.jetbrains.com/idea/download/
+* IntelliJ IDEA CE: https://www.jetbrains.com/idea/download/
 
 == Primeira parte
 
@@ -312,25 +310,272 @@ libro.imprimir();
 
 * Constructores
 
-=== Quiz 1
+Fonte: https://www.coursera.org/learn/java-poo
+
+=== ¿Cal é a forma correcta de chamar o constructor da clase Persoa con "Tomás" é "Antón"?
 
 [source,java]
 ----
-// Saved in file ".java"
-class A{
-	public static void main(String args[]){
-		System.out.println("Hello java");
-	}
+Persoa p1;
+
+p1.init("Tomás", "Antón");
+----
+
+=== ¿Cal é a forma correcta de chamar o constructor da clase Persoa con "Tomás" é "Antón"?
+
+[source,java]
+----
+Persoa p1.Persoa("Tomás", "Antón");
+----
+
+=== ¿Cal é a forma correcta de chamar o constructor da clase Persoa con "Tomás" é "Antón"?
+
+[source,java]
+----
+Persoa p1 = new Persoa("Tomás", "Antón");
+----
+// Correcta
+
+=== ¿Cal é a forma correcta de chamar o constructor da clase Persoa con "Tomás" é "Antón"?
+
+[source,java]
+----
+Persoa p1 = new Persoa();
+
+p1("Tomás", "Antón");
+----
+
+=== Dada a clase e o código seguintes, ¿cal é a saída?
+
+[source,java]
+----
+class Square {
+    private double sideLength = 10.0;
+
+    public Square() {}
+    public Square(double sideLength) {
+        this();
+    }
+
+    public double getSideLength() { return sideLength; }
 }
 ----
 
-Fonte: https://www.coursera.org/learn/java-poo
+[source,java]
+----
+Square sq = new Square(8.0);
+System.out.println(sq.getSideLength());
+----
+
+=== Dada a clase e o código seguintes, ¿cal é a saída?
+
+1. 8.0
+2. Non compila, a chamada a *this* non é valida
+3. 10.0
+4. 0
+5. Non compila, *sideLength* non está inicializado
+
+// Imprime 10, a 3.
+
+=== Dada a clase seguinte, ¿qué instanciación é correcta?
+
+[source,java]
+----
+class Rectangle {
+    double largeur;
+    double hauteur;
+
+    public Rectangle() {
+        largeur = 0.0;
+        hauteur = 0.0;
+    }
+
+    public Rectangle(double lr, double hr) {
+        largeur = lr;
+        hauteur = hr;
+    }
+
+    public Rectangle(Rectangle r) {
+        largeur = r.largeur;
+        hauteur = r.hauteur;
+    }
+}
+----
+
+=== ¿Esta instanciación é correcta?
+
+[source,java]
+----
+Rectangle r = new Rectangle(Rectangle(2, 10));
+----
+// Non
+
+=== ¿Esta instanciación é correcta?
+
+[source,java]
+----
+Rectangle r1 = new Rectangle();
+Rectangle r2 = new Rectangle(r2);
+----
+// Non
+
+=== ¿Esta instanciación é correcta?
+
+[source,java]
+----
+Rectangle r = new Rectangle(Rectangle());
+----
+// Non
+
+=== ¿Esta instanciación é correcta?
+
+[source,java]
+----
+Rectangle r1 = new Rectangle();
+Rectangle r2 = new Rectangle(r1);
+----
+// Non
+
+=== ¿Esta instanciación é correcta?
+
+[source,java]
+----
+Rectangle r1 = new Rectangle(2, 10);
+Rectangle r2 = new Rectangle(r1);
+Rectangle r3 = new Rectangle(r2);
+----
+// Si
+
+=== ¿Esta instanciación é correcta?
+
+[source,java]
+----
+Rectangle r = new Rectangle(10);
+----
+// Non
+
+=== ¿Esta instanciación é correcta?
+
+[source,java]
+----
+Rectangle r1 = new Rectangle(2, 10);
+Rectangle r2 = new Rectangle(r1);
+----
+// Sí
+
+=== ¿Esta instanciación é correcta?
+
+[source,java]
+----
+Rectangle r = new Rectangle(Rectangle(10, 2));
+----
+// No
+
+=== ¿Esta instanciación é correcta?
+
+[source,java]
+----
+Rectangle r = new Rectangle();
+----
+// Sí
+
+=== ¿Esta instanciación é correcta?
+
+[source,java]
+----
+Rectangle r = new Rectangle(2, 10);
+----
+// Sí
+
+=== Temos a seguinte clase
+
+[source,java]
+----
+class Circle {
+    private double radius;
+
+    public void setRadius(double r) {
+        radius = r;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+}
+----
+
+=== ¿Qué imprime o seguinte código?
+
+[source,java]
+----
+Circle c1 = new Circle();
+Circle c2 = new Circle();
+
+c1.setRadius(5.0);
+c2 = c1;
+c1.setRadius(c2.getRadius());
+
+System.out.println(c1.getRadius() + ", " + c2.getRadius());
+----
+
+=== ¿Qué imprime o seguinte código?
+
+1. 5.0, 0.0
+2. 0.0, 5.0
+3. 0.0, 0.0
+4. 5.0, 5.0
+
+// A correcta é a 4. Mostrar outras combinaciones
+
+=== Temos a seguinte clase
+
+[source,java]
+----
+class Rectangle2 {
+    private double largeur;
+    private double hauteur;
+
+    public Rectangle2(double lr, double hr) {
+        largeur = lr;
+        hauteur = hr;
+    }
+}
+----
+
+=== ¿Qué imprime o seguinte código?
+
+[source,java]
+----
+Rectangle2 r1 = new Rectangle2(2, 1);
+Rectangle2 r2 = new Rectangle2(2, 1);
+
+System.out.println(r1 == r2);
+System.out.println(r1.equals(r2));
+System.out.println(r2.equals(r1));
+----
+
+=== ¿Qué imprime o seguinte código?
+
+1. true
+   true
+   true
+2. true
+   false
+   false
+3. false
+   false
+   false
+4. false
+   true
+   true
+
+// E a 3, non temos implementado o equals
 
 == Exercicio da biblioteca
 
-* Requisitos: https://github.com/vigojug/taller-iniciacion-1/blob/master/src/java/README.md
-* Código: https://github.com/vigojug/taller-iniciacion-1/blob/master/src/java/Biblio.java
-
+* Requisitos: https://github.com/vigojug/taller-iniciacion-1/blob/master/src/exercise/README.md
+* Código: https://github.com/vigojug/taller-iniciacion-1/blob/master/src/exercise/Biblio.java
+* Mover `Biblio.java` a `src/main/java`.
 
 Fonte: https://www.coursera.org/learn/java-poo
 
@@ -340,6 +585,4 @@ image::questions.jpg[background, size=cover]
 
 * Slides: http://www.vigojug.org/taller-iniciacion-1
 * Código: https://github.com/vigojug/taller-iniciacion-1
-
-
-
+* Slack: canal #vigojug en http://www.vigotech.org
