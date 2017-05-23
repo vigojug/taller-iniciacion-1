@@ -72,17 +72,241 @@ Source: http://gif.co/vc7E.gif
 * Clases, obxectos, atributos e métodos
 * Encapsulación e abstracción
 
-=== Quiz 1
+Fonte: https://www.coursera.org/learn/java-poo
+
+=== Selecciona todas as correctas
+
+- [ ] Todas as variables son clases
+// Falso
+
+=== Selecciona todas as correctas
+
+- [ ] Unha clase define un novo tipo
+// Certo
+
+=== Selecciona todas as correctas
+
+- [ ] Unha instancia é unha realización de unha clase
+// Certo
+
+=== Selecciona todas as correctas
+
+- [ ] A palabra chave `class` permite o acceso a instancia actual da clase, a partir de un dos seus métodos.
+// Falso
+
+=== Selecciona todas as correctas
+
+- [ ] É posible acceder a instancia actual ca axuda da palabra chave `this`
+// Certo
+
+=== Selecciona todas as correctas
+
+- [ ] A palabra chave `public` permite o acceso a instacia actual da clase, a partir de un dos seus métodos
+// Certo
+
+=== Selecciona todas as correctas
+
+- [ ] Unha clase precisa o menos dunha variable para ser definida
+// Falso
+
+=== Selecciona todas as correctas
+
+- [ ] Non é posible acceder a instancia actual dunha clase a partir de un dos seus métodos
+// Falso
+
+=== Selecciona todas as correctas
+
+- [ ] Unha clase é unha realización dunha instancia
+// Certo
+
+=== Selecciona todas as correctas
+
+- [ ] A palabra chave `self` permite o acceso a instancia actual da clase, a partir de un dos seus métodos
+// Falso
+
+=== Selecciona todas as correctas
+
+- [ ] A palabra chave `private` permite o acceso a instancia actual da clase, a partir de un dos seus métodos
+
+=== ¿Cómo declaramos unha variable de tipo mazá?
+
+1. a = Maza();
+2. Maza(a);
+3. Maza a;
+4. Maza() = new a;
+5. Maza() a;
+6. Maza() = a;
+
+// A correcta é a 3
+
+
+=== ¿Cal é a saída do seguinte programa?
 
 [source,java]
 ----
-// Saved in file ".java"
-class A{
-	public static void main(String args[]){
-		System.out.println("Hello java");
+class Rectangulo {
+
+	double hauteur, largeur;
+
+}
+----
+
+[source,java]
+----
+Rectangulo r1 = new Rectangulo();
+
+Rectangulo r2 = new Rectangulo();
+
+r1.hauteur = 3.0;
+
+System.out.println((r1.hauteur + r2.hauteur));
+----
+
+
+=== ¿Cal é a saída do seguinte programa?
+
+1. Imprime "3.0 + 3.0"
+2. Imprime "3.0"
+3. Imprime "6.0"
+4. Xenera unha excepción
+5. Non compila
+
+// Imprime 3.0
+
+=== ¿Cal é a forma correcta de crear unha instancia da clase Rectangulo e chamar o método area?
+
+[source,java]
+----
+Rectangulo.area();
+----
+// Falso
+
+=== ¿Cal é a forma correcta de crear unha instancia da clase Rectangulo e chamar o método area?
+
+[source,java]
+----
+area(Rectangulo);
+----
+// Falso
+
+=== ¿Cal é a forma correcta de crear unha instancia da clase Rectangulo e chamar o método area?
+
+[source,java]
+----
+Rectangulo r;
+Rectangulo.area();
+----
+// Falso
+
+=== ¿Cal é a forma correcta de crear unha instancia da clase Rectangulo e chamar o método area?
+
+[source,java]
+----
+Rectangulo r;
+area(r);
+----
+// Falso
+
+=== ¿Cal é a forma correcta de crear unha instancia da clase Rectangulo e chamar o método area?
+
+[source,java]
+----
+Rectangulo r;
+r.area();
+----
+// Falso
+
+=== ¿Cal é a forma correcta de crear unha instancia da clase Rectangulo e chamar o método area?
+
+[source,java]
+----
+Rectangulo r = new Rectangulo();
+r.area();
+----
+// Verdadeiro
+
+
+=== Temos a seguinte clase Punto
+
+[source,java]
+----
+class Punto {
+
+	private double x;
+	private double y;
+
+	public void setX(double newX){
+		x = newX;
+	}
+
+	public void setY(double newY){
+		y = newY;
+	}
+
+	public double getX(){ return x;}
+
+	public double getY(){ return y;}
+}
+----
+
+=== E o seguinte código
+
+[source,java]
+----
+Punto p1 = new Punto();
+Punto p2 = new Punto();
+
+p1.setX(2.5);
+p2.setY(4.0);
+
+System.out.println(p1.getX() + ", " + p1.getY());
+System.out.println(p2.getX() + ", " + p2.getY());
+----
+
+=== ¿Qué imprime?
+
+1. *2.5, 4.0* e *2.5, 4.0*
+2. *2.5, 0.0* e *0.0, 4.0*
+3. *2.5, 0.0* e *2.5, 4.0*
+4. *2.5, 0.0* e *4.0, 0.0*
+
+// A verdeira é a 2
+
+=== Temos a seguinte clase Libro
+
+[source,java]
+----
+class Libro {
+
+	private int numPages;
+	public void setNumPages(int numPages) {
+		numPages = this.numPages;
+	}
+
+	public void imprimir() {
+		System.out.println(numPages);
 	}
 }
 ----
+
+=== E o seguinte código
+
+[source,java]
+----
+Libro libro = new Libro();
+
+libro.setNumPages(150);
+
+libro.imprimir();
+----
+
+=== ¿Qué imprime?
+
+1. 0
+2. Non compila
+3. 150
+
+// A solución é 1. (imprime cero)
 
 == Segunda parte
 
@@ -100,16 +324,22 @@ class A{
 }
 ----
 
+Fonte: https://www.coursera.org/learn/java-poo
+
 == Exercicio da biblioteca
 
-* Requisitos:
-* Código:
+* Requisitos: https://github.com/vigojug/taller-iniciacion-1/blob/master/src/java/README.md
+* Código: https://github.com/vigojug/taller-iniciacion-1/blob/master/src/java/Biblio.java
 
-== Dúbidas e fontes
+
+Fonte: https://www.coursera.org/learn/java-poo
+
+== Dúbidas
 
 image::questions.jpg[background, size=cover]
 
-* Slides: PENDENTE
-* Código: PENDENTE
-* Fonte: https://www.coursera.org/learn/java-poo
+* Slides: http://www.vigojug.org/taller-iniciacion-1
+* Código: https://github.com/vigojug/taller-iniciacion-1
+
+
 
